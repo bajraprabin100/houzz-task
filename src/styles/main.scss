@@ -1,0 +1,168 @@
+@import 'theme.scss';
+@import 'variables';
+@import 'fonts';
+@import 'bootstrap';
+@import 'utilities';
+@import '../components/BreadcrumbToolbar.scss';
+@import '../components/Footer.scss';
+@import '../components/LogoToolbar.scss';
+@import '../components/PageHeader.scss';
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  margin-bottom: 250px;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+h4 {
+  color: $primary;
+  text-transform: uppercase;
+}
+
+span[role='link'] {
+  &:hover {
+    @extend .pointer;
+    text-decoration: underline;
+  }
+}
+
+@import 'ag-grid', 'subtoolbar';
+
+$border-width-sizes: ('1', '2', '3', '4', '5', '6', '7', '8');
+
+@each $name in $border-width-sizes {
+  // NOTE: keep the empty string so you can use `border-2` (ie - all)
+  @each $var in '', 'top-', 'right-', 'bottom-', 'left-' {
+    .border-#{$var}#{$name} {
+      border-#{$var}width: #{$name}px !important;
+    }
+  }
+}
+.authlayout_image {
+  background-origin: border-box;
+  background-size: cover;
+  height: auto;
+}
+
+.five9-chat-button1 {
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  display: inline-block;
+  position: relative;
+  height: 38px;
+  border: none;
+  border-radius: 10px 10px 0 0;
+  margin: 0;
+  padding: 10px 12px 0 39px;
+  background: linear-gradient($five9-chat-icon1, $five9-chat-icon2);
+  color: white;
+  font-size: 18px;
+  font-weight: normal;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.five9-chat-button1 .five9-icon {
+  display: inline-block;
+  position: absolute;
+  left: 6px;
+  top: 4px;
+  width: 34px;
+  height: 34px;
+  background-image: url(https://app.five9.com/five9_clients/consoles_latest/SocialWidget/images/chat-small.png);
+  background-repeat: no-repeat;
+  background-size: 34px 34px;
+  background-position: center center;
+  margin: 0;
+  padding: 0;
+}
+
+.text-custom-50 { color: $login-text-custom !important; }
+
+.hcp-radio {
+  .root-0-2-5 {
+    margin-top: 0;
+  }
+}
+
+.vertical-options {
+  display: block !important;
+}
+
+// message submit badge files styles [for case message]
+.badge-wrapper {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  position: relative;
+
+  ul {
+    &.text-danger {
+      position: absolute;
+      bottom: -34px;
+      right: 0px;
+      list-style: none;
+
+      li {
+        white-space: nowrap;
+      }
+    }
+  }
+
+  .badge-left {
+    margin-top: 4px;
+    display: inline-block;
+  }
+
+  .badge-right {
+    display: none;
+  }
+}
+
+.badge-left {
+  display: none;
+}
+
+.enrollmentModuleContainer {
+  .modal-content {
+    height: 90vh;
+    overflow: auto;
+  }
+
+  @media (min-width: 992px) {
+    .modal-lg, .modal-xl {
+      max-width: 80vw;
+    }
+  }
+}
+
+.active-tab {
+  &.bg-info {
+    background-color: $selected-tab-color !important;
+  }
+}
+
+.btn {
+  &.btn-primary {
+    &.active {
+      background-color: darken($secondary, 10%) !important;
+      border-color: darken($secondary, 10%) !important;
+    }
+  }
+}
+
+.ag-row-selected {
+  background-color: $primary-10 !important;
+}

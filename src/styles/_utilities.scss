@@ -1,0 +1,384 @@
+//@import "theme-colors";
+
+/**
+  BACKGROUND UTILITIES
+*/
+.bg-light-gray {
+  background-color: $gray-100;
+}
+
+/**
+  BORDER UTILITIES
+*/
+.border-gray {
+  border-color: $gray-500;
+}
+
+.vertical-border {
+  border-left: 1px solid $gray-100;
+  height: 500px;
+}
+
+.vertical-border-header {
+  border-left: 1px solid $gray-300;
+  height: 30px;
+  margin-top: 10px;
+}
+
+/**
+  HELPER UTILITIES
+*/
+.pointer {
+  cursor: pointer;
+  pointer-events: all;
+}
+
+.pointer-none {
+  cursor: none;
+  pointer-events: none;
+}
+
+.section {
+  padding: 10px 30px;
+  background-color: #e8eef4;
+}
+
+.view-container {
+  @extend .mt-4;
+  @extend .mb-5;
+}
+
+.fill-available {
+  width: -webkit-fill-available !important;
+  height: -webkit-fill-available !important;
+}
+
+/**
+  TEXT UTILITIES
+*/
+.no-transform {
+  text-transform: none;
+}
+
+.required-text {
+  @extend .fs-2;
+  font-weight: bold;
+  color: $danger;
+}
+
+.section-text {
+  @extend .fs-4;
+  font-weight: bold;
+  color: $primary;
+}
+.section-small-text {
+  @extend .fs-1;
+  font-weight: bold;
+  color: $primary;
+}
+
+.sub-section-text {
+  font-weight: normal;
+  color: $secondary;
+  text-decoration: underline;
+}
+
+.form-row-height {
+  height: 83.92px;
+}
+
+.verbiage-text {
+  position: absolute;
+  top: 3px;
+  left: 80%;
+}
+
+.text-underline {
+  text-decoration: underline;
+}
+
+.text-white-space-wrap {
+  white-space: pre-line;
+}
+
+/**
+  ICON UTILITIES
+*/
+
+// Flips an icon horizontally
+.icon-flipped {
+  transform: scaleX(-1);
+  -moz-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  -ms-transform: scaleX(-1);
+}
+
+
+.loading-wrapper {
+  width: 40%;
+  position: absolute;
+  padding-top: 125px;
+  left: 50%;
+  transform: translateX(-50%);
+  &.paList-screen {
+    text-align: center;
+    padding-top: 0;
+    left: 50%;
+    top: 25%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.loading-text {
+  font-size: 2em;
+  white-space: pre-wrap;
+}
+
+//sliding dots
+.stage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 1.5rem 0;
+  margin: 0 -5%;
+  overflow: hidden;
+}
+
+@mixin before-after-content {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: 0;
+}
+
+.dot-floating {
+  position: relative;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: $primary;
+  color: $primary;
+  animation: dotFloating 3s infinite cubic-bezier(0.15, 0.6, 0.9, 0.1);
+
+  &::before {
+    @include before-after-content;
+    left: -12px;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: $primary;
+    color: $primary;
+    animation: dotFloatingBefore 3s infinite ease-in-out;
+  }
+  &::after {
+    @include before-after-content;
+    left: -24px;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: $primary;
+    color: $primary;
+    animation: dotFloatingAfter 3s infinite cubic-bezier(0.4, 0, 1, 1);
+  }
+}
+
+@keyframes dotFloating {
+  0% {
+    left: calc(-50% - 5px);
+  }
+  75% {
+    left: calc(50% + 105px);
+  }
+  100% {
+    left: calc(50% + 105px);
+  }
+}
+
+@keyframes dotFloatingBefore {
+  0% {
+    left: -50px;
+  }
+  50% {
+    left: -12px;
+  }
+  75% {
+    left: -50px;
+  }
+  100% {
+    left: -50px;
+  }
+}
+
+@keyframes dotFloatingAfter {
+  0% {
+    left: -100px;
+  }
+  50% {
+    left: -24px;
+  }
+  75% {
+    left: -100px;
+  }
+  100% {
+    left: -100px;
+  }
+}
+
+// fix for three dot not being displayed on view requests and patient table for various zoom levels
+.grid-wrapper {
+  .dropdown-menu.show {
+    display: block;
+    transform: translate(-1px, -1px) !important;
+  }
+}
+
+// spinner
+.spin{
+  animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+  from { transform: scale(1) rotate(0deg); }
+  to { transform: scale(1) rotate(360deg); }
+}
+
+.ellipse-renderer {
+  white-space: nowrap !important;
+  overflow: hidden;
+  padding-top: 13px;
+  text-overflow: ellipsis;
+  display: inline-block !important;
+}
+
+.ellipse-renderer-requests {
+  white-space: nowrap !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block !important;
+}
+
+.ssn-input-box { 
+  position: relative; 
+}
+
+.ssn-input { 
+  display: block; 
+  border: 1px solid #d7d6d6; 
+  background: #fff; 
+  width: 100%; 
+  position: absolute;
+  left: 82px;
+}
+
+.ssn-placeholder { 
+  position: absolute; 
+  display: block; 
+  left: 16px; 
+  top: 37px; 
+  z-index: 9; 
+}
+
+.ssn-dash {
+  position: relative;
+  top: -2px;
+}
+
+.ssn-error {
+  position: absolute;
+  top: 68px;
+  left: 81px;
+}
+
+.prescription-mandatory-notice {
+  font-size: 0.8rem !important; 
+}
+
+
+/* Popup style */
+.popup-box {
+  position: fixed;
+  background: #00000050;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+ 
+.popup-box-container {
+  position: relative;
+  width: 70%;
+  height: auto;
+  max-height: 70vh;
+  margin-top: calc(100vh - 85vh - 20px);
+  background: #fff;
+  border-radius: 4px;
+  padding: 20px;
+  border: 1px solid #999;
+  overflow: auto;
+  left: 50%;
+  transform: translate(-50%, 0px);
+}
+
+.invalid-feedback-input {
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 80%;
+    color: #d64638;
+}
+
+
+.document-upload-content {
+    text-align: center;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.never-active {
+  &.dropdown-item.active, .dropdown-item:active {
+      background: transparent !important;
+      color: #000;
+  }
+
+  &.never-active.dropdown-item.active:hover {
+      background-color: $secondary !important;
+      border-top: 0.0625rem solid #ffffff;
+      color: #fff;
+  }
+}
+
+#prescribing-information-dropdown, #important-safety-information-dropdown {
+  display: block;
+  word-wrap: break-word;
+  width: auto;
+  white-space: normal;
+  text-align: center;
+}
+
+.auto-width {
+  width:fit-content
+}
+
+@media all and (max-width: 1200px) {
+  #prescribing-information-dropdown,
+  #important-safety-information-dropdown,
+  #user-menu-dropdown,
+  .dropdown-toggle {
+    width: fit-content !important;
+    text-align: left !important;
+    margin-left: 0px !important;
+  }
+  .vertical-border-header {
+    display: none !important ;
+  }
+  .cmx__hcp-user-nav {
+    display: flex !important;
+    justify-content: left !important;
+  }
+  .dropdown-menu.show {
+    width: fit-content !important;
+  }
+}

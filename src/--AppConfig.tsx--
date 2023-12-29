@@ -1,0 +1,64 @@
+import React, { PropsWithChildren, useCallback, useEffect } from 'react';
+import { Container } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
+import { CONFIG_DOMAIN, GATEWAY_API_URL } from './api';
+import { useGetPortalConfiguration } from './api/portal-config.generated';
+import { RequestStateUI, OverbrandToolbar } from './components';
+import { cacheAppConfig, loadConfig } from './redux';
+
+const LOCALHOST_NAMES = ['localhost', '127.0.0.1'];
+
+export const AppConfig = (props: PropsWithChildren<unknown>) => {
+  const dispatch = useDispatch();
+  const isLocalUrl = LOCALHOST_NAMES.includes(location.hostname);
+  const { data, loading, error, refetch } = useGetPortalConfiguration({
+    base: GATEWAY_API_URL,
+    lazy: true
+  });
+
+  const loadData = useCallback(() => {
+    const configDomain = isLocalUrl ? CONFIG_DOMAIN : location.hostname;
+    refetch({ queryParams: { url: configDomain } });
+  }, []);
+
+  useEffect(loadData, [loadData]);
+
+  useEffect(() => {
+    if (!data) return;
+
+    dispatch(cacheAppConfig(data));
+    dispatch(loadConfig());
+  }, [dispatch, data]);
+
+  return (
+    <AppConfigWrapper wrap={!data}>
+      <RequestStateUI
+        loadingUIEnabled
+        loadingText='Loading Application Config'
+        isLoading={loading}
+        errorUIEnabled
+        errorText={error?.message}
+        errorTitle='Configuration Error'
+        isError={error}
+        reloadButtonText='Retry'
+        reloadingEnabled
+        reload={loadData}>
+        {props.children}
+      </RequestStateUI>
+    </AppConfigWrapper>
+  );
+};
+interface AppConfigWrapperProps extends PropsWithChildren<unknown> {
+  wrap: boolean;
+}
+
+const AppConfigWrapper = ({ wrap = true, ...props }: AppConfigWrapperProps) => {
+  if (!wrap) return <>{props.children}</>;
+
+  return (
+    <>
+      <OverbrandToolbar withLinks={false} />
+      <Container className='py-4'>{props.children}</Container>
+    </>
+  );
+};

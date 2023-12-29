@@ -1,0 +1,44 @@
+
+
+/**
+  Apply any general styling to all buttons
+ **/
+button {
+  @extend .fs-2;
+  @extend .px-5;
+  @extend .py-2;
+  @extend .font-weight-bold;
+}
+
+/**
+  Apply any general styling to all labels
+ */
+label {
+  @extend .fs-2;
+  color: $gray-400;
+}
+
+/**
+  Custom styling to Tabs
+ */
+.tabs-primary {
+  .nav-link {
+    color: $gray-500;
+    font-size: small;
+
+    &:hover {
+      color: $primary;
+      border: none;
+      border-bottom: solid $primary 2px !important;
+      padding-top: 9px !important;
+      margin-bottom: -2px;
+    }
+
+    &.active {
+      font-weight: bold;
+      border: none;
+      border-bottom: solid $primary 2px !important;
+      margin-bottom: -2px;
+    }
+  }
+}

@@ -1,0 +1,299 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Create Patient",
+    "version": "1.0",
+    "title": "createPatient"
+  },
+  "paths": {
+    "/patient": {
+      "post": {
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "operationId": "createPatient",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/PatientRequest"
+            },
+            "x-examples": {
+              "application/json": "{\r\n    \"LastName\": \"mnbnmna\",\r\n    \"FirstName\": \"yutgjbj\",\r\n    \"MiddleName\": \"NA\",\r\n    \"DOB\": \"2002-01-01\",\r\n    \"RefusedToProvideDOB\":\"1\" ,\r\n    \"Gender\": \"M\",\r\n    \"SSN\": \"234-34-5432\",\r\n    \"Email\": \"hhh@hhh.kkk\",\r\n    \"ExternalID\": \"string\",\r\n    \"ConsentReceivedManufacturer\": \"\",\r\n    \"ConsentDateManufacturer\": \"2020-10-10\",\r\n    \"ConsentExpDateManufacturer\": \"2020-10-10\",\r\n    \"ConsentSource\": \"source\",\r\n    \"ConsentReceivedBy\": \"doc\",\r\n    \"PreferredMethodOfContact\": \"mobile\",\r\n    \"PreferredLanguage\":\"english\",\r\n     \"PreferredLanguageOther\":\"spanish\",\r\n    \"Addresses\": [\r\n               {\r\n        \"AddressType\": \"home1\",\r\n        \"AddressName\": \"John1\",\r\n         \"Rank\": 1,\r\n        \"Address1\": \"Test Addr\",\r\n        \"Address2\": \"NONE\",\r\n        \"Address3\": \"NONE\",\r\n        \"City\": \"Aldie\",\r\n        \"State\": \"VA\",\r\n        \"ZIP\": \"20105\",\r\n        \"Active\": \"0\",\r\n        \"ExternalID\": \"string\",\r\n        \"Country\": \"USA\",\r\n        \"Comments\": \"NONE\"\r\n      },\r\n         {\r\n        \"AddressType\": \"home2\",\r\n        \"AddressName\": \"John1\",\r\n         \"Rank\": 1,\r\n        \"Address1\": \"994 Addr\",\r\n        \"Address2\": \"NONE\",\r\n        \"Address3\": \"NONE\",\r\n        \"City\": \"renton\",\r\n        \"State\": \"VA\",\r\n        \"ZIP\": \"20105\",\r\n        \"Active\": \"0\",\r\n        \"ExternalID\": \"string\",\r\n        \"Country\": \"USA\",\r\n        \"Comments\": \"NONE\"\r\n      }\r\n      ],\r\n      \"Phones\": [\r\n      {\r\n        \"PhoneNumber\": \"324-342-3333\",\r\n        \"Extension\": \"123\",\r\n        \"Type\": \"work\",\r\n        \"Comments\": \"none\",\r\n        \"Active\": \"true\",\r\n        \"Rank\": 1,\r\n        \"OKtoLeaveMsg\": \"yes\",\r\n        \"PreferredTime\": \"Morning\",\r\n        \"Country\": \"USA\",\r\n        \"CountryCallingCode\": \"213\",\r\n        \"PreferredCallingRate\": \"Weekly\",\r\n        \"OKtoSendTextMsg\": \"yes\"\r\n      },\r\n      {\r\n        \"PhoneNumber\": \"222-121-2345\",\r\n        \"Extension\": \"123\",\r\n        \"Type\": \"mobile\",\r\n        \"Comments\": \"none\",\r\n        \"Active\": \"true\",\r\n        \"Rank\": 1,\r\n        \"OKtoLeaveMsg\": \"yes\",\r\n        \"PreferredTime\": \"Morning\",\r\n        \"Country\": \"USA\",\r\n        \"CountryCallingCode\": \"213\",\r\n        \"PreferredCallingRate\": \"Weekly\",\r\n        \"OKtoSendTextMsg\": \"yes\"\r\n      }\r\n    ], \r\n    \"Consent\": [\r\n    {\r\n       \"DrugName\": \"amolodipine\",\r\n      \"ReceivedDate\": \"2020-12-12\",\r\n      \"ReceivedSource\": \"none\",\r\n      \"OptedOut\": \"none\",\r\n      \"OptedOutDate\": \"2020-12-12\"\r\n    },\r\n    {\r\n      \"DrugName\": \"telmasartan\",\r\n      \"ReceivedDate\": \"2020-12-12\",\r\n      \"ReceivedSource\": \"none\",\r\n      \"OptedOut\": \"none\",\r\n      \"OptedOutDate\": \"2020-12-12\"\r\n    }\r\n  ],\r\n    \"Contacts\": [\r\n      {\r\n        \"LastName\": \"franky\",\r\n        \"FirstName\": \"brier\",\r\n        \"MiddleName\": \"ma\",\r\n        \"Suffix\": \"none\",\r\n        \"Prefix\": \"none\",\r\n        \"Title\": \"Mr\",\r\n        \"ContactType\": \"Email\",\r\n        \"Email\": \"johndoe@gmail.com\",\r\n        \"MasterContactID\": 1234,\r\n        \"ExternalID\": \"string\",\r\n        \"Relationship\": \"self\",\r\n        \"LegallyAuthRep\": true,\r\n        \"PatientContactType\": \"mobile\"\r\n      },\r\n      {\r\n        \"LastName\": \"marshall212\",\r\n        \"FirstName\": \"doe212\",\r\n        \"MiddleName\": \"ma\",\r\n        \"Suffix\": \"none\",\r\n        \"Prefix\": \"none\",\r\n        \"Title\": \"Mr\",\r\n        \"ContactType\": \"Email\",\r\n        \"Email\": \"johndoe1233452@gmail.com\",\r\n        \"MasterContactID\": 1234,\r\n        \"ExternalID\": \"string\",\r\n        \"Relationship\": \"self\",\r\n        \"LegallyAuthRep\": true,\r\n        \"PatientContactType\": \"mobile\"\r\n      }\r\n    ]\r\n  }\r\n"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Definition generated from Swagger Inspector",
+            "schema": {
+              "$ref": "#/definitions/PatientResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Addresses": {
+      "properties": {
+        "AddressType": {
+          "type": "string"
+        },
+        "AddressName": {
+          "type": "string"
+        },
+        "Rank": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "Address1": {
+          "type": "string"
+        },
+        "Address2": {
+          "type": "string"
+        },
+        "Address3": {
+          "type": "string"
+        },
+        "City": {
+          "type": "string"
+        },
+        "State": {
+          "type": "string"
+        },
+        "ZIP": {
+          "type": "string"
+        },
+        "Active": {
+          "type": "string"
+        },
+        "ExternalID": {
+          "type": "string"
+        },
+        "Country": {
+          "type": "string"
+        },
+        "Comments": {
+          "type": "string"
+        }
+      }
+    },
+    "Phones": {
+      "properties": {
+        "PhoneNumber": {
+          "type": "string"
+        },
+        "Extension": {
+          "type": "string"
+        },
+        "Type": {
+          "type": "string"
+        },
+        "Comments": {
+          "type": "string"
+        },
+        "Active": {
+          "type": "string"
+        },
+        "Rank": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "OKtoLeaveMsg": {
+          "type": "string"
+        },
+        "PreferredTime": {
+          "type": "string"
+        },
+        "Country": {
+          "type": "string"
+        },
+        "CountryCallingCode": {
+          "type": "string"
+        },
+        "PreferredCallingRate": {
+          "type": "string"
+        },
+        "OKtoSendTextMsg": {
+          "type": "string"
+        }
+      }
+    },
+    "Consent": {
+      "properties": {
+        "DrugName": {
+          "type": "string"
+        },
+        "ReceivedDate": {
+          "type": "string"
+        },
+        "ReceivedSource": {
+          "type": "string"
+        },
+        "OptedOut": {
+          "type": "string"
+        },
+        "OptedOutDate": {
+          "type": "string"
+        }
+      }
+    },
+    "Contacts": {
+      "properties": {
+        "LastName": {
+          "type": "string"
+        },
+        "FirstName": {
+          "type": "string"
+        },
+        "MiddleName": {
+          "type": "string"
+        },
+        "Suffix": {
+          "type": "string"
+        },
+        "Prefix": {
+          "type": "string"
+        },
+        "Title": {
+          "type": "string"
+        },
+        "ContactType": {
+          "type": "string"
+        },
+        "Email": {
+          "type": "string"
+        },
+        "MasterContactID": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "ExternalID": {
+          "type": "string"
+        },
+        "Relationship": {
+          "type": "string"
+        },
+        "LegallyAuthRep": {
+          "type": "boolean"
+        },
+        "PatientContactType": {
+          "type": "string"
+        }
+      }
+    },
+    "PatientRequest": {
+      "properties": {
+        "LastName": {
+          "type": "string"
+        },
+        "FirstName": {
+          "type": "string"
+        },
+        "MiddleName": {
+          "type": "string"
+        },
+        "DOB": {
+          "type": "string"
+        },
+        "RefusedToProvideDOB": {
+          "type": "string"
+        },
+        "Gender": {
+          "type": "string"
+        },
+        "SSN": {
+          "type": "string"
+        },
+        "Email": {
+          "type": "string"
+        },
+        "ExternalID": {
+          "type": "string"
+        },
+        "ConsentReceivedManufacturer": {
+          "type": "string"
+        },
+        "ConsentDateManufacturer": {
+          "type": "string"
+        },
+        "ConsentExpDateManufacturer": {
+          "type": "string"
+        },
+        "ConsentSource": {
+          "type": "string"
+        },
+        "ConsentReceivedBy": {
+          "type": "string"
+        },
+        "PreferredMethodOfContact": {
+          "type": "string"
+        },
+        "PreferredLanguage": {
+          "type": "string"
+        },
+        "PreferredLanguageOther": {
+          "type": "string"
+        },
+        "Addresses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Addresses"
+          }
+        },
+        "Phones": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Phones"
+          }
+        },
+        "Consent": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Consent"
+          }
+        },
+        "Contacts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Contacts"
+          }
+        }
+      }
+    },
+    "Patient": {
+      "properties": {
+        "PatientID": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "Errors": {
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "PatientResponse": {
+      "properties": {
+        "Patient": {
+          "$ref": "#/definitions/Patient"
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Errors"
+          }
+        }
+      }
+    }
+  }
+}

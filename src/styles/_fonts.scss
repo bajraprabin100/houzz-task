@@ -1,0 +1,22 @@
+
+
+// ---------------------------------------------
+// Bootstraps "$spacer" variable is set to 1rem.
+// Based on our needs we have setup a "$font-sizes"
+// list variable to create font size classes
+// ---------------------------------------------
+$font-sizes: 0.65, 0.8, 0.9, 1, 1.15, 1.5, 3;
+
+// ---------------------------------------------
+// For each of the items in "$font-sizes" variable
+// we multiply its value by the "$spacer" amount.
+// ---------------------------------------------
+@each $font-size in $font-sizes {
+  // Get the index of each list item starting at 1.
+  $i: index($font-sizes, $font-size);
+
+  // .fs-1 = font-size: $spacer * 0.65, etc.
+  .fs-#{$i} {
+    font-size: $spacer * $font-size !important;
+  }
+}

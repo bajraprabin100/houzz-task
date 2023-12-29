@@ -1,0 +1,188 @@
+@import '../apellis/theme-colors.scss';
+@import '../main.scss';
+
+//Apellis specific styles
+
+@mixin dropdown-hover-mixin {
+  color: $white !important;
+  background-color: $secondary;
+}
+
+@mixin btn-active-mixin {
+  color: $white !important;
+  background-color: $secondary !important;
+}
+
+.btn {
+  &-info {
+    background-color: $primary-btn-color;
+    border-color: $primary-btn-color;
+
+    &:hover {
+      @include btn-active-mixin;
+    }
+
+    &:not(:disabled) {
+      &:not(.disabled) {
+        &:active {
+          @include btn-active-mixin;
+        }
+      }
+    }
+  }
+
+  &-primary {
+    background-color: $secondary !important;
+    border-color: $secondary !important;
+    &:hover {
+      @include btn-active-mixin;
+      border-color: $secondary;
+    }
+    &:not(:disabled) {
+      &:not(.disabled) {
+        &:active {
+          @include btn-active-mixin;
+          border-color: $secondary;
+        }
+      }
+    }
+  }
+
+  &-outline-primary {
+    color: $secondary;
+    border-color: $secondary;
+
+    &:hover {
+      @include btn-active-mixin;
+      border-color: $secondary;
+    }
+
+    &:not(:disabled) {
+      &:not(.disabled) {
+        &:active {
+          @include btn-active-mixin;
+          border-color: $secondary;
+        }
+      }
+    }
+  }
+}
+
+.show > .btn-outline-primary.dropdown-toggle {
+  @include btn-active-mixin;
+  border-color: $secondary;
+}
+
+
+.page-item {
+  &.active {
+    .page-link {
+      background-color: $primary;
+    }
+  }
+}
+
+.text-info {
+  color: $primary !important;
+}
+
+.section-text {
+  color: $primary;
+}
+
+.info-box {
+  background-color: $secondary;
+  &.arrow-left {
+    &:after {
+      border-right: 15px solid $secondary;
+    }
+  }
+  &.arrow-right {
+    &:after {
+      border-left: 15px solid $secondary;
+    }
+  }
+}
+
+.info-box-container {
+  color: $primary;
+}
+
+.cmx {
+  &__case-detail-sidebar {
+    background-color: $primary;
+  }
+
+  &__case-detail-sidebar-patient-info {
+    &__hr-override {
+      border: 1px solid $horizontal-line-color !important;
+      margin-right: 5% !important;
+      width: 95%;
+    }
+  }
+
+  &__patient-detail-sidebar-nav {
+    &__nav-link-unselected {
+      border-color: $secondary !important;
+      background-color: $secondary !important;
+      color: $white !important;
+    }
+
+    &__nav-link-unselected:hover {
+      border-color: $cmx-grey-5 !important;
+      background-color: $cmx-grey-5 !important;
+      color: $primary !important;
+    }
+  }
+
+  &__patient-detail-sidebar-nav {
+    &__nav-link-selected {
+      border-color: $primary !important;
+      background-color: $cmx-grey-5 !important;
+      color: $primary !important;
+    }
+  }
+
+  &__profile-tab-title {
+    color: $primary;
+  }
+}
+
+.view-container {
+  padding-bottom: 3rem;
+}
+
+
+.dropdown-item:hover {
+  @include dropdown-hover-mixin;
+}
+
+.dropdown-item:focus {
+  @include dropdown-hover-mixin;
+}
+
+a {
+  color: $secondary;
+
+  &.nav-link {
+    color: $secondary;
+  }
+
+  &.dropdown-item {
+    &.active {
+      @include dropdown-hover-mixin;
+    }
+  }
+}
+
+.ag-theme-alpine .dropdown-item.active {
+  @include dropdown-hover-mixin;
+}
+
+.bs-tooltip-top .arrow::before, .bs-tooltip-auto[x-placement^="top"] .arrow::before {
+  border-top-color: $secondary;
+}
+
+.tooltip-inner {
+  background-color: $secondary;
+}

@@ -1,0 +1,54 @@
+import { AnyObject } from 'final-form';
+import { useCallback, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { AnyAction } from 'redux';
+import { GATEWAY_API_URL } from '../api';
+import { PortalFeatures, PortalMenus } from '../api/portal-config.generated';
+import { AnyType } from '../interfaces';
+import { AppRootState } from '../redux';
+import { tenancyResourceSelector } from '../redux/selectors/multi-tenancy.selector';
+
+type PortalResultTypes = PortalMenus | PortalFeatures;
+
+export interface UseTenancyOpts {
+  cacheAction: (payload: PortalResultTypes) => AnyAction;
+  dataHook: (opts: AnyType) => AnyType;
+  isAuthRequired?: boolean;
+  refetchParams?: AnyType;
+  selector: (state: AppRootState) => AnyObject | undefined | null;
+}
+
+/**
+ * A hook used to load multi-tenancy content
+ *
+ * @param {UseTenancyOpts} {  }
+ * @returns
+ */
+export const useTenancyCache = ({ isAuthRequired = false, refetchParams = {}, ...opts }: UseTenancyOpts) => {
+  const dispatch = useDispatch();
+  const isAuthenticated = useSelector((state: AppRootState) => state.auth.session?.user !== undefined);
+  const clientId = useSelector((state: AppRootState) => state.app.config?.clientId);
+  const data = useSelector(opts.selector);
+  const { refetch, ...result } = opts.dataHook({
+    lazy: true
+  });
+
+  const loadData = useCallback(() => {
+    if (data || !clientId || (isAuthRequired && !isAuthenticated)) return;
+    refetch({
+      ...refetchParams,
+      base: GATEWAY_API_URL,
+      pathParams: { ...refetchParams.pathParams, id: clientId.toString() }
+    });
+  }, [clientId, data, isAuthenticated, isAuthRequired]);
+
+  useEffect(loadData, [loadData]);
+
+  useEffect(() => {
+    if (result.data) dispatch(opts.cacheAction(result.data));
+  }, [result.data]);
+
+  return { ...result, data };
+};
+
+export const useSelectTenancyResources = (key: string) => useSelector(tenancyResourceSelector(key));

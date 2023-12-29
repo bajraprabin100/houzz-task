@@ -1,0 +1,370 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "PortalConfiguration",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
+  "paths": {
+    "/configuration/portal": {
+      "get": {
+        "summary": "Get the cofiguration information for the client",
+        "tags": ["Portal Configuration"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PortalClientDetails"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-portalConfiguration-hcp",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "url"
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "PortalFeature": {
+        "description": "",
+        "type": "object",
+        "properties": {
+          "portalFeatureId": {
+            "type": "integer"
+          },
+          "key": {
+            "type": "string"
+          },
+          "data": {
+            "type": "string"
+          },
+          "isCustom": {
+            "type": "boolean"
+          }
+        }
+      },
+      "Error": {
+        "description": "",
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      },
+      "OktaInfo": {
+        "title": "OktaInfo",
+        "type": "object",
+        "properties": {
+          "authurl": {
+            "type": "string"
+          },
+          "clientId": {
+            "type": "string"
+          }
+        }
+      },
+      "PortalFeatures": {
+        "title": "PortalFeatures",
+        "type": "object",
+        "properties": {
+          "portalFeatures": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PortalFeature"
+            }
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Error"
+            }
+          }
+        }
+      },
+      "PortalClientDetails": {
+        "description": "",
+        "type": "object",
+        "properties": {
+          "clientId": {
+            "type": "integer"
+          },
+          "programId": {
+            "type": "integer"
+          },
+          "portalType": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "address1": {
+            "type": "string"
+          },
+          "address2": {
+            "type": "string"
+          },
+          "address3": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string"
+          },
+          "zip": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "fax": {
+            "type": "string"
+          },
+          "domainURL": {
+            "type": "string"
+          },
+          "headerLogo": {
+            "type": "string"
+          },
+          "clientLogo": {
+            "type": "string"
+          },
+          "applicationName": {
+            "type": "string"
+          },
+          "cssOverrideFile": {
+            "type": "string"
+          },
+          "oktaInfo": {
+            "$ref": "#/components/schemas/OktaInfo"
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Error"
+            }
+          }
+        }
+      },
+      "PortalResource": {
+        "title": "PortalResource",
+        "type": "object",
+        "properties": {
+          "portalResourceId": {
+            "type": "integer"
+          },
+          "key": {
+            "type": "string"
+          },
+          "data": {
+            "type": "string"
+          },
+          "isCustom": {
+            "type": "boolean"
+          }
+        }
+      },
+      "PortalResources": {
+        "title": "PortalResources",
+        "type": "object",
+        "properties": {
+          "portalResources": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PortalResource"
+            }
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Error"
+            }
+          }
+        }
+      },
+      "PortalMenu": {
+        "title": "PortalMenu",
+        "type": "object",
+        "properties": {
+          "portalMenuId": {
+            "type": "string"
+          },
+          "key": {
+            "type": "string"
+          },
+          "data": {
+            "type": "string"
+          },
+          "isCustom": {
+            "type": "boolean"
+          }
+        }
+      },
+      "PortalMenus": {
+        "title": "PortalMenus",
+        "type": "object",
+        "properties": {
+          "portalMenus": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PortalMenu"
+            }
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Error"
+            }
+          }
+        }
+      },
+      "ServiceEntity": {
+        "description": "",
+        "type": "object",
+        "properties": {
+          "entityId": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "isActive": {
+            "type": "string"
+          },
+          "sequence": {
+            "type": "string"
+          },
+          "key": {
+            "type": "string"
+          },
+          "data": {
+            "type": "string"
+          },
+          "isEnabled": {
+            "type": "string"
+          },
+          "isCustom": {
+            "type": "string"
+          }
+        }
+      },
+      "Service": {
+        "description": "",
+        "type": "object",
+        "properties": {
+          "serviceId": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "isActive": {
+            "type": "string"
+          },
+          "entities": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ServiceEntity"
+            }
+          }
+        }
+      },
+      "ServiceResponse": {
+        "title": "Services",
+        "type": "object",
+        "properties": {
+          "service": {
+            "$ref": "#/components/schemas/Service"
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Error"
+            }
+          }
+        }
+      },
+      "Drug": {
+        "title": "Drug",
+        "type": "object",
+        "properties": {
+          "DrugId": {
+            "type": "integer"
+          },
+          "DrugBrandName": {
+            "type": "string"
+          },
+          "DrugGenericName": {
+            "type": "string"
+          },
+          "DrugLabelName": {
+            "type": "string"
+          },
+          "Manufacturer": {
+            "type": "string"
+          },
+          "DrugDescription": {
+            "type": "string"
+          },
+          "DrugNDC": {
+            "type": "string"
+          },
+          "JCode1": {
+            "type": "string"
+          },
+          "Jcode2": {
+            "type": "string"
+          },
+          "Quantity": {
+            "type": "string"
+          },
+          "DaysSupply": {
+            "type": "string"
+          }
+        }
+      },
+      "Drugs": {
+        "title": "Drugs",
+        "type": "object",
+        "properties": {
+          "ClientDrugs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Drug"
+            }
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Error"
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,51 @@
+
+
+.cmx__footer {
+  position: absolute;
+  bottom: 0;
+  height: 250px;
+
+  align-self: flex-end;
+  background: $gray-700;
+  border-top: 0.3125rem solid $primary;
+  color: $white;
+  font-size: 0.875rem;
+  padding: 2rem 0 2rem;
+
+  &__blurb {
+    font-size: 0.75rem;
+  }
+
+  &__container {
+    border-top: 0.0625rem solid $gray-200;
+    padding-bottom: .5rem;
+    padding-top: 1.0rem;
+  }
+
+  &__link {
+    display: block;
+    margin: 0 0.5rem 0.5rem;
+    white-space: pre;
+    word-break: break-all;
+  }
+
+  &__link-title {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+  }
+
+  &__logo {
+    height: 3.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  &__sub {
+    font-size: 0.75rem;
+    margin-top: 2rem;
+  }
+
+  a {
+    color: $white;
+  }
+}

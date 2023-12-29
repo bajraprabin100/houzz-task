@@ -1,0 +1,50 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "env": {
+    "browser": true,
+    "jest": true,
+    "es6": true,
+    "serviceworker": true
+  },
+  "plugins": ["@typescript-eslint", "import", "react"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier/@typescript-eslint",
+    "plugin:prettier/recommended"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "rules": {
+    "no-console": "error",
+    "no-eval": "error",
+    "import/first": "error",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "react/self-closing-comp": [
+      "error",
+      {
+        "component": true,
+        "html": false
+      }
+    ]
+  },
+  "settings": {
+    "react": {
+      "version": "detect",
+      "flowVersion": "0.53" // Flow version
+    }
+  },
+  "overrides": [{
+    "files": ["src/graphql/generated/types.ts"],
+    "rules": {
+      "@typescript-eslint/no-explicit-any": "off"
+    }
+  }]
+}
